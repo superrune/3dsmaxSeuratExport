@@ -7,7 +7,7 @@ This is a script for 3ds Max that will setup the necessary camera data for gener
 This script lets you setup rendered input data (a bunch of animated camera frames) from any 3ds Max renderer, with an accompanying JSON data file, which are then ready to be processed using the Seurat Pipeline binary to a realtime 6DoF VR file.
 
 Read more about Seurat here: [Google VR Seurat on Github](https://github.com/googlevr/seurat) \
-You can find binaries for Windows here: [Google VR Seurat binaries on Github](https://github.com/ddiakopoulos/seurat/releases) \
+You can find binaries for Windows here: [Google VR Seurat binaries on Github](https://github.com/ddiakopoulos/seurat/releases)
 
 ## How to use
 
