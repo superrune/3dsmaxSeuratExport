@@ -12,21 +12,21 @@ You can find binaries for Windows here: [Google VR Seurat binaries on Github](ht
 ## How to use
 
 1. Prepare your 3ds Max scene
-  * Make sure there is no animation in your scene.
-  * Run the 3dsmaxSeuratExport.ms file inside 3ds Max.
+   * Make sure there is no animation in your scene.
+   * Run the 3dsmaxSeuratExport.ms file inside 3ds Max.
 2. Adjust the exporter settings
-  * Double check the name and output path.
-  * Input the position of the camera.
-  * Set the viewbox radius to the space you want to move your head (50 cm is a good start).
-  * Check that your clipping settings cover the scene.
+   * Double check the name and output path.
+   * Input the position of the camera.
+   * Set the viewbox radius to the space you want to move your head (50 cm is a good start).
+   * Check that your clipping settings cover the scene.
 3. Adjust your render setting
-  * Make sure there is no filtering on the antialiasing (samples set to 1)
-  * Turn off any motion blur, DOF and glow.
+   * Make sure there is no filtering on the antialiasing (samples set to 1)
+   * Turn off any motion blur, DOF and glow.
 4. Render your frames
 5. Process your frames using the Seurat Pipeline binary
-  * Copy the Seurat binaries into the same folder as your output
-  * Start a Windows PowerShell from the folder, and start the Pipeline binary. Here's how I do it:
-  `.\seurat-pipeline-msvc2017-x64.exe -gamma 2.2 -output_path test -input_path manifest.json`
+   * Copy the Seurat binaries into the same folder as your output
+   * Start a Windows PowerShell from the folder, and start the Pipeline binary. Here's how I do it:
+   `.\seurat-pipeline-msvc2017-x64.exe -gamma 2.2 -output_path test -input_path manifest.json`
 6. Load the resulting files into the Seurat viewer for Unity or Unreal
 
 
