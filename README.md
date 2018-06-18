@@ -25,7 +25,7 @@ You can find binaries for Windows here: [Google VR Seurat binaries on Github](ht
 4. Render your frames
 5. Process your frames using the Seurat Pipeline binary
    * Copy the Seurat binaries into the same folder as your output
-   * Start a Windows PowerShell from the folder, and start the Pipeline binary. Here's how I do it:
+   * Start a Windows PowerShell from the folder, and start the Pipeline binary. Here's how I do it: \
    `.\seurat-pipeline-msvc2017-x64.exe -gamma 2.2 -output_path test -input_path manifest.json`
 6. Load the resulting files into the Seurat viewer for Unity or Unreal
 
