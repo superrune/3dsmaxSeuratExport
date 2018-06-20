@@ -22,6 +22,7 @@ You can find binaries for Windows here: [Google VR Seurat binaries on Github](ht
 3. Adjust your render setting
    * Make sure there is no filtering on the antialiasing (samples set to 1)
    * Turn off any motion blur, DOF and glow.
+   * Open the EXR output file window, and make sure the Depth element is output as a G-Buffer channel.
 4. Render your frames
 5. Process your frames using the Seurat Pipeline binary
    * Copy the Seurat binaries into the same folder as your output
@@ -54,7 +55,7 @@ Camera clip start and end [default: 1.0 and 100000.0]: The extent of the geometr
 
 ## Known issues
 
-The script have only been tested with 3ds Max 2018 and Redshift, but should work in other releases or renderers. I have only tested the resulting Seurat files in the tester Binary that comes with Seurat - and not in an actual VR headset. I did not see any changing speculars, which I was hoping was part of the format, and I'm not sure if that is missing or not. Would love to hear feedback if this actually works or not!
+The script have only been tested with 3ds Max 2018 and Redshift, but should work in other releases or renderers. I have only tested the resulting Seurat files in the tester Binary that comes with Seurat - and not in an actual VR headset. I did not see any changing speculars, which I was hoping was part of the format, and I'm not sure if that is missing or not. Sample output files are coming soon.
 
 Have fun!
 
