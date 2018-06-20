@@ -59,6 +59,7 @@ struct seuratExport
 		) else return False
 	),
 
+	-- Returns a sample point relative to inPos and within radius
 	function pointInRadius inPos radius sample =
 	(
 		zeroPos = [inPos.x-radius, inPos.y-radius, inPos.z-radius]
@@ -67,29 +68,6 @@ struct seuratExport
 	),
 	
 	-- Creates a cube-face 90 degree FOV OpenGL-style projection matrix
-	function cubeFaceProjectionMatrix_old near far =
-	(
-		near = near as float
-		far = far as float
-		
-		left = -near
-		right = near
-		bottom = -near
-		top = near
-		a = (2.0 * near) / (right - left)
-		b = (2.0 * near) / (top - bottom)
-		c = (right + left) / (right - left)
-		d = (top + bottom) / (top - bottom)
-		ee = (near + far) / (near - far)
-		f = (2.0 * near * far) / (near - far)
-
-		return #(	a,   0.0,     c,  0.0, \
-					0.0,    b,    d,  0.0, \
-					0.0,  0.0,   ee,    f, \
-					0.0,  0.0, -1.0,  0.0 )
-	),
-	
-	-- Creates a cube-face 90 degree FOV OpenGL-style projection matrix, shorter version
 	function cubeFaceProjectionMatrix near far =
 	(
 		far = far as float
@@ -163,26 +141,7 @@ struct seuratExport
 		return camera_positions
 	),
 	
-	function createCameras cameraPositions nearClip:1.0 = 
-	(
-		for c = 1 to cameraPositions.count do
-		(
-			camPos = (cameraPositions[c])
-			camParent = point name:(prefix + (formattedPrint c format:"03d")) pos:camPos size:1.0
-			for face in faceNames do 
-			(
-				faceCam = Freecamera fov:90 nearClip:nearClip farClip:farClip name:(camParent.name + "_" + face) pos:camPos showCone:true
-				faceCam.parent = camParent
-				if face == "front" then rotate faceCam (angleaxis 90 [1,0,0])
-				else if face == "back" then (rotate faceCam (angleaxis 90 [1,0,0]); rotate faceCam (angleaxis 180 [0,0,1]))
-				else if face == "left" then (rotate faceCam (angleaxis 90 [1,0,0]); rotate faceCam (angleaxis 90 [0,0,1]))
-				else if face == "right" then (rotate faceCam (angleaxis 90 [1,0,0]); rotate faceCam (angleaxis -90 [0,0,1]))
-				else if face == "top" then rotate faceCam (angleaxis 180 [1,0,0])
-			)
-		)
-		return True
-	),
-	
+	-- Animates the rotation of the camera to cover all cube faces, then animates between all sample positions
 	function createAnimatedCamera cameraPositions frameOffset:0 nearClip:1.0 farClip:1000000.0 =
 	(
 		faceCam = Freecamera fov:90 nearClip:nearClip farClip:farClip name:(prefix + "_render") pos:[0,0,0] showCone:true
@@ -236,6 +195,7 @@ struct seuratExport
 		return faceCam
 	),
 	
+	-- Nice matrix formatting for JSON output
 	function formatMatrixForJSON matrixArray numTabs:7 =
 	(
 		matrixString = ""
@@ -253,6 +213,7 @@ struct seuratExport
 		return matrixString
 	),
 	
+	-- The JSON output function
 	function writeJSON cameraPositions headBoxCenter targetFolder frameOffset:0 nearClip:1.0 farClip:1000000.0 resolution:1024 numPos:32 =
 	(
 		outFile = createFile (targetFolder + "manifest.json" )
@@ -322,7 +283,9 @@ struct seuratExport
 	(
 		-- Set render resolution and render out name
 		renderWidth = renderHeight = resolution
-		rendOutputFilename = targetFolder + prefix + ".exr"
+		rendOutputFilename = targetFolder + prefix + "..exr"
+		rendSaveFile = true
+		rendTimeType = 2
 		
 		-- Generate all cameras and output JSON
 		cameraPositions = generateCameraPositions headBoxCenter numPos headBoxSize
