@@ -28,7 +28,7 @@ You can find binaries for Windows here: [Google VR Seurat binaries on Github](ht
    * Copy the Seurat binaries into the same folder as your output
    * Start a Windows PowerShell from the folder, and start the Pipeline binary. Here's how I do it: \
    `.\seurat-pipeline-msvc2017-x64.exe -gamma 2.2 -output_path test -input_path manifest.json`
-6. Load the resulting files into the Seurat viewer for Unity or Unreal
+6. Load the resulting object and texture file into Unity or Unreal
 
 
 ## The settings explained
@@ -55,7 +55,7 @@ Camera clip start and end [default: 1.0 and 100000.0]: The extent of the geometr
 
 ## Known issues
 
-The script have only been tested with 3ds Max 2018 and Redshift, but should work in other releases or renderers. I have only tested the resulting Seurat files in the tester Binary that comes with Seurat - and not in an actual VR headset. I did not see any changing speculars, which I was hoping was part of the format, and I'm not sure if that is missing or not. Sample output files are coming soon.
+The script have only been tested with 3ds Max 2018 and Redshift, but should work in other releases or renderers. Sample output files are coming soon.
 
 Have fun!
 
