@@ -55,7 +55,7 @@ Camera clip start and end [default: 1.0 and 100000.0]: The extent of the geometr
 
 ## Known issues
 
-The script have only been tested with 3ds Max 2018 and Redshift, but should work in other releases or renderers. Sample output files are coming soon.
+The script have only been tested with 3ds Max 2018 and Redshift, other engines are not supported at this moment.
 
 Have fun!
 
